@@ -1,0 +1,32 @@
+.header{
+  position: fixed;
+  top:0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  background: #eee;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 15px;
+}
+.nav{
+
+}
+.list{
+
+}
+
+.link:first-child{
+  margin-right: 15px;
+}
+
+.link{
+  font-size: 22px;
+  font-weight: 400;
+}
+.mainContent{
+  margin-top: 120px;
+}
