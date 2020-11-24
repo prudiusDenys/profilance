@@ -1,13 +1,26 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import classes from "./News.module.css";
-import {useSelector} from "react-redux";
-import {InitialStateType} from "../../../BLL/reducers/news-reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {NewsType} from "../../../BLL/reducers/news-reducer";
 import {RootReducersType} from "../../../BLL/store";
-import {Search} from "../../common/Search/Search";
+import {TextField} from "@material-ui/core";
+import {setSearchValue} from "../../../BLL/reducers/app-reducer";
 
 export const News = () => {
 
-	const allNews = useSelector<RootReducersType, InitialStateType>(state => state.news);
+	let allNews = useSelector<RootReducersType, Array<NewsType>>(state => state.news.news);
+	const searchValue = useSelector<RootReducersType, string>(state => state.app.searchValue)
+	const dispatch = useDispatch();
+
+	const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+		dispatch(setSearchValue(e.currentTarget.value))
+	}
+
+	if (searchValue.length > 0) {
+		allNews = allNews.filter(n => {
+			return n.title.toLowerCase().match(searchValue.toLowerCase())
+		})
+	}
 
 	const news = allNews.map(n => {
 		return (
@@ -16,7 +29,7 @@ export const News = () => {
 				<p className={classes.text}>
 					{n.text}
 				</p>
-				<span>
+				<span className={classes.date}>
 					{n.date}
 				</span>
 			</div>
@@ -25,7 +38,9 @@ export const News = () => {
 
 	return (
 		<>
-			<Search/>
+			<div className={classes.search}>
+				<TextField placeholder={'search...'} variant={"standard"} value={searchValue} onChange={onChangeHandler}/>
+			</div>
 			{news}
 		</>
 	)
