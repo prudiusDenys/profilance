@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/profilance/static/css/main.6351010a.chunk.css",
+    "main.js": "/profilance/static/js/main.a894c894.chunk.js",
+    "main.js.map": "/profilance/static/js/main.a894c894.chunk.js.map",
+    "runtime-main.js": "/profilance/static/js/runtime-main.bfa38530.js",
+    "runtime-main.js.map": "/profilance/static/js/runtime-main.bfa38530.js.map",
+    "static/js/2.d630884a.chunk.js": "/profilance/static/js/2.d630884a.chunk.js",
+    "static/js/2.d630884a.chunk.js.map": "/profilance/static/js/2.d630884a.chunk.js.map",
+    "static/js/3.371c0da7.chunk.js": "/profilance/static/js/3.371c0da7.chunk.js",
+    "static/js/3.371c0da7.chunk.js.map": "/profilance/static/js/3.371c0da7.chunk.js.map",
+    "index.html": "/profilance/index.html",
+    "static/css/main.6351010a.chunk.css.map": "/profilance/static/css/main.6351010a.chunk.css.map",
+    "static/js/2.d630884a.chunk.js.LICENSE.txt": "/profilance/static/js/2.d630884a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bfa38530.js",
+    "static/js/2.d630884a.chunk.js",
+    "static/css/main.6351010a.chunk.css",
+    "static/js/main.a894c894.chunk.js"
+  ]
+}
