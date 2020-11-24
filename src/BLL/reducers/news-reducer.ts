@@ -1,48 +1,70 @@
+import {v1} from "uuid";
 import {getDate} from "../../functions/functions";
 
 const initialState = {
 	news: [
 		{
-			id: 1,
+			id: v1(),
 			title: 'COVID-19',
 			text: '"Доля субъектов с показателем менее или равно единице за прошедшие две недели был в 53 субъектах. Однако же самый высокий показатель распространенности и распространения дальнейших инфекционных процессов зарегистрирован в Республике Алтай, Еврейской автономной области, Вологодской области, Санкт-Петербурге, Смоленской области, в Пермском крае, Республике Крым и Ненецком автономном округе".',
+			approvedNews: false,
 			date: getDate()
 		},
 		{
-			id: 2,
+			id: v1(),
 			title: 'Конец монополии на поиск: почему США судятся с Google',
 			text: 'Иск Минюста США от 20 октября, поданный в окружной суд округа Колумбия, можно свести буквально к нескольким тезисам. Так, Google подозревают в сговоре с Apple, операторами мобильной связи и другими игроками рынка смартфонов. Якобы в корпорации предлагали "сообщникам" бонусы за то, что они устанавливали поисковую систему Google вариантом по умолчанию для пользователей.\n' +
 				'Alphabet-Google прямо обвиняют в применении антиконкурентной тактики, что проявляется в работе операционной системы Android. Устройства, на которых предустановлены Google-сервисы (от клиента электронной почты до голосового помощника), выдают исключительно контекстную рекламу от Google.',
+			approvedNews: true,
 			date: getDate()
 		},
 		{
-			id: 3,
+			id: v1(),
 			title: 'Едим как в Италии: секреты и рецепты самой популярной в мире кухни',
 			text: 'МОСКВА, 23 ноя — РИА Новости, Светлана Баева. Сегодня во многих странах и крупных городах России открывается V Всемирная неделя итальянской кухни. Из-за коронавируса большинство лекций и мастер-классов пройдут онлайн. Но участвовать стоит. "Это больше чем просто еда, — объясняют в Национальном агентстве Италии по туризму (ЭНИТ). — Это философия здорового образа жизни, где удовольствие и хорошее настроение так же важны, как вкус и аромат блюд". Интересные факты и секреты лучших рецептов, — в материале РИА Новости.',
+			approvedNews: true,
 			date: getDate()
 		},
 		{
-			id: 4,
+			id: v1(),
 			title: 'МОСКВА, 23 ноя — РИА Новости',
 			text: 'МОСКВА, 23 ноя — РИА Новости, Анна Нехаева. На канале "Россия" — новая историческая драма "Грозный" о юности и взрослении Ивана Васильевича, о его окружении. Один из центральных персонажей — советник царя Малюта Скуратов, которого сыграл Виктор Сухоруков. В интервью РИА Новости он рассказал, похож ли проект на "Игру престолов", почему отказался сниматься в бондиане и каково участвовать в средневековой битве.',
+			approvedNews: true,
 			date: getDate()
 		}, {
-			id: 5,
+			id: v1(),
 			title: 'Последствия ледяного шторма в Приморье',
 			text: 'Приморье на минувшей неделе накрыл снежный циклон. В регионе, многие жители которого остаются без света, тепла и воды, действует режим ЧС. Последствия разгула стихии — в фотоленте Ria.ru.',
+			approvedNews: true,
 			date: getDate()
 		}
-	]
+	],
 }
 
-export const NewsReducer = (state: InitialStateType = initialState, action: any): InitialStateType => {
+export const NewsReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
 	switch (action.type) {
-
+		case "NEWS/SET_NEW_NEWS": {
+			return {...state, news: [action.newNews, ...state.news]}
+		}
+		case "NEWS/SET_NEWS": {
+			return {...state, news: [...action.news]}
+		}
 		default:
 			return state
 	}
 }
 
+//actions
+
+export const setNews = (news: Array<NewsType>) => {
+	return {type: 'NEWS/SET_NEWS', news} as const
+}
+export const setNewNews = (newNews: NewsType) => {
+	return {type: 'NEWS/SET_NEW_NEWS', newNews} as const
+}
+
+
 //types
 export type InitialStateType = { news: Array<NewsType> }
-export type NewsType = { id: number, title: string, text: string, date: string }
+export type NewsType = { id: string, title: string, text: string, date: string, approvedNews: boolean }
+type ActionsType = ReturnType<typeof setNewNews> | ReturnType<typeof setNews>

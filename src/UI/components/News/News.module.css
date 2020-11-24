@@ -18,3 +18,32 @@
   margin-left: 30px;
   text-align: left;
 }
+
+.search {
+  display: flex;
+  justify-content: space-between;
+}
+
+.textFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.approveArticle {
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  color: black
+}
+
+.unapprovedArticle {
+  position: relative;
+}
+
+.unapprovedArticle:hover .approveArticle {
+  display: block;
+}
+
+

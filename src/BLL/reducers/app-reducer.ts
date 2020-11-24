@@ -6,7 +6,7 @@ const initialState = {
 	userData: {
 		login: '',
 		password: '',
-		rememberMe: false
+		isAdmin: false
 	},
 	searchValue: ''
 }
@@ -22,7 +22,7 @@ export const AppReducer = (state: InitialStateType = initialState, action: Actio
 		case "APP/SET_REGISTERED": {
 			return {...state, isSignIn: action.value}
 		}
-		case "APP/SET_SEARCH_VALUE":{
+		case "APP/SET_SEARCH_VALUE": {
 			return {...state, searchValue: action.value}
 		}
 		default:

@@ -12,14 +12,9 @@ export const MainLayout = ({children}: any) => {
 	const isSignIn = useSelector<RootReducersType, boolean>(state => state.app.isSignIn)
 	const dispatch = useDispatch()
 
+	const logInHandler = () => dispatch(showLogin(true))
+	const logOutHandler = () => dispatch(setRegistered(false))
 
-	const logInHandler = () => {
-		dispatch(showLogin(true))
-	}
-
-	const logOutHandler = () => {
-		dispatch(setRegistered(false))
-	}
 	return (
 		<div>
 			<div className={containerStyle.container}>

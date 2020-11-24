@@ -1,6 +1,6 @@
-.header{
+.header {
   position: fixed;
-  top:0;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -12,21 +12,16 @@
   width: 100%;
   padding: 0 15px;
 }
-.nav{
 
-}
-.list{
-
-}
-
-.link:first-child{
+.link:first-child {
   margin-right: 15px;
 }
 
-.link{
+.link {
   font-size: 22px;
   font-weight: 400;
 }
-.mainContent{
+
+.mainContent {
   margin-top: 120px;
 }

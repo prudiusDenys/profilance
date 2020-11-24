@@ -20,13 +20,13 @@ import {setRegistered, setUserData, showLogin} from "../../../BLL/reducers/app-r
 export type LoginDataType = {
 	login: string,
 	password: string,
-	rememberMe: boolean
+	isAdmin: boolean
 }
 
 type LoginErrorType = {
 	login?: string,
 	password?: string,
-	rememberMe?: boolean
+	isAdmin?: boolean
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -79,15 +79,12 @@ export const Login = React.memo(() => {
 
 	const dispatch = useDispatch()
 	const styles = useStyles()
-	// const dispatch = useDispatch()
-	// const isSignIn = useSelector<rootReducers, boolean>(state => state.login.isSignIn)
-	// const success = useSelector<rootReducers, boolean>(state => state.app.success)
 
 	const formik = useFormik({
 		initialValues: {
 			login: '',
 			password: '',
-			rememberMe: false
+			isAdmin: false
 		},
 		validate: (values: LoginDataType) => {
 			const errors: LoginErrorType = {};
@@ -113,13 +110,11 @@ export const Login = React.memo(() => {
 	const onCloseHandler = () => {
 		dispatch(showLogin(false))
 	}
-	// if (isSignIn) return <Redirect to={'/'}/>
 
 	return (
 		<div>
 			<Grid container className={styles.container}>
 				<Grid item className={`${styles.gridItem} ${styles.enable}`}>
-					{/*{!success && <Spinner/>}*/}
 					<Paper elevation={3} style={{padding: '30px'}}>
 						<h2 style={{textAlign: "center", margin: '0 0 30px 0'}}>Форма входа</h2>
 						<form onSubmit={formik.handleSubmit}>
@@ -143,13 +138,11 @@ export const Login = React.memo(() => {
 															 {...formik.getFieldProps('password')}/>
 										{formik.errors.password && <div className={styles.errMessage}>{formik.errors.password}</div>}
 									</div>
-									<FormControlLabel className={styles.formLabel} label={'Запомнить меня'}
+									<FormControlLabel className={styles.formLabel} label={'Войти как администратор'}
 																		control={
-																			// Get all props from checkbox
-																			// checked value must be taken from formik
 																			<Checkbox color={'primary'}
-																								checked={formik.values.rememberMe}
-																								{...formik.getFieldProps('rememberMe')}/>
+																								checked={formik.values.isAdmin}
+																								{...formik.getFieldProps('isAdmin')}/>
 																		}
 									/>
 									<Button className={styles.button}

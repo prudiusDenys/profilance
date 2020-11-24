@@ -1,11 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 import classes from "./Home.module.css";
 import {useSelector} from "react-redux";
 import {RootReducersType} from "../../../BLL/store";
 import {Login} from "../Login/Login";
 
 export const Home = () => {
-
 
 	const isSignIn = useSelector<RootReducersType, boolean>(state => state.app.isSignIn)
 	const showLogin = useSelector<RootReducersType, boolean>(state => state.app.showLogin)
